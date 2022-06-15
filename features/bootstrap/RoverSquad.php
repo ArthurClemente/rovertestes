@@ -16,18 +16,23 @@ class RoverSquad{
     $valPosicInicial = explode(" ", $posicaoLancamento);
     $x = intval($valPosicInicial[0]);
     $y = intval($valPosicInicial[1]);
-    $posicao = intval($valPosicInicial[2]);
+    $posicao = $valPosicInicial[2];
 
     $this->checkValidadeLocalLancamento($x, $y);
     $rover = new Rover($x, $y, $posicao, $this->plato);
     array_push($this->squad, $rover);
-    $this->roverAtivo = $rover;
+    return $rover;
   }
 
+  
+
   public function checkValidadeLocalLancamento($x, $y){
-    if($x < 0 && $x > $this->plato->getLargura() &&
-      $y < 0 && $y > $this->plato->getAltura())
-    {
+    $larguraMax = intval($this->plato->getLargura());
+    $alturaMax = intval($this->plato->getAltura());
+    
+    if($x < 0 or $x > $larguraMax or
+      $y < 0 or $y > $alturaMax )
+      {
         return "Local de lancamento do rover inválido";
       }
   }
