@@ -5,15 +5,12 @@ Funcionalidade: Adicionar rover
     Eu preciso adicionar um novo rover na superficie
 
 Exemplo: Adicionar rover em uma altura proibida
-    Dado que a "altura" do plato é 5
-    E a "largura" do plato é 3
-    Quando eu adiciono um rover na posicao "y" igual a 9
-    E a posicao "x" é igual a 3
+    Dado que o plato ("5 5")
+    Quando eu adiciono um rover na posicao "9 3 N"
     Entao eu deveria receber a mensagem "Local de lancamento do rover inválido"
 
 Exemplo: Adicionar rover em uma area permitida
-    Dado que a "altura" do plato é 7
-    E a "largura" do plato é 5
+    Dado que o plato ("7 5")
     Quando eu adiciono um rover na posicao "x" igual a 1
     E a na posicao "y" igual a 3
     Entao o tamanho da lista "squad" deveria aumentar em 1
