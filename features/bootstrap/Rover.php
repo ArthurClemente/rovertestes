@@ -13,106 +13,124 @@ $movimento = str_split($movimentoRover);
 class Rover {
   private $x;
   private $y;
-  private $direcao;
+  private $direcaoRover;
   private $plato;
 
-  function __construct($x, $y, $direcao, Plato $plato){
+  function __construct($x, $y, $direcaoRover, Plato $plato){
       $this->x = $x;
       $this->y = $y;
-      $this->direcao = $direcao;
+      $this->direcaoRover = $direcaoRover;
       $this->plato = $plato;
   }
   
-  public function mover($direcao){
-    switch($direcao){
-      
-      case "L":
-        $this->virarEsquerda();
-        break;
-      
-      case "R":
-        $this->virarDireita();
-        break;
-      
-      case "M":
-        $this->moverAdiante();
-        break;
-      
-      default:
-        echo "Movimento inválido!!";
+  public function mover($direcaoMovimento){
+    $movimento = str_split($direcaoMovimento);
+    foreach($movimento as $move){
+      switch($move){
+        
+        case "L":
+          $this->virarEsquerda();
+          break;
+        
+        case "R":
+          $this->virarDireita();
+          break;
+        
+        case "M":
+          $this->moverAdiante();
+          break;
+        
+        default:
+          echo "Movimento inválido!!";
+      }
     }
   }
 
   public function moverAdiante(){
-    switch($this->direcao){
+    $x = $this->x;
+    $y = $this->y;
+    switch($this->direcaoRover){
       
       case "N":
-        if($this->y + 1 <= $this->plato->getAltura()){
+        if($y + 1 <= $this->plato->getAltura()){
           $this->y++;
+        }else{
+          echo "impossível mover adiante ";
+          die();
         }
         break;
       
       case "L":
-        if($this->x + 1 <= $this->plato->getLargura()){
+        if($x + 1 <= $this->plato->getLargura()){
           $this->x++;
+        }else{
+          echo "impossível mover adiante ";
+          die();
         }
         break;
       
-      case "S";
-        if($this->y - 1 >= 0){
-          $this->y--;
+      case "S":
+        if($y - 1 >= 0){
+          $this->y-- ;
+        }else{
+          echo "impossível mover adiante ";
+          die();
         }
         break;
       
-      case "O";
-        if($this->x - 1 >= 0){
+      case "O":
+        if($x - 1 >= 0){
           $this->x--;
+        }else{
+          echo "impossível mover adiante ";
+          die();
         }
         break;
       
       default:
         echo "Impossível mover adiante";
+        die();
     }
   }
 
   public function virarEsquerda(){
-    switch($this->direcao){
+    switch($this->direcaoRover){
       
       case "N":
-        $this->direcao = "O";
+        $this->direcaoRover = "O";
         break;
 
       case "L":
-        $this->direcao = "N";
+        $this->direcaoRover = "N";
         break;
 
       case "S":
-        $this->direcao = "L";
+        $this->direcaoRover = "L";
         break;
 
       case "O":
-        $this->direcao = "S";
+        $this->direcaoRover = "S";
         break;
     }
   }
   
   public function virarDireita(){
-    switch($this->direcao){
+    switch($this->direcaoRover){
       
       case "N":
-        $this->direcao = "L";
+        $this->direcaoRover = "L";
         break;
 
       case "L":
-        $this->direcao = "S";
+        $this->direcaoRover = "S";
         break;
 
       case "S":
-        $this->direcao = "O";
+        $this->direcaoRover = "O";
         break;
 
       case "O":
-        $this->direcao = "N";
+        $this->direcaoRover = "N";
         break;
     }
   }
@@ -125,8 +143,8 @@ class Rover {
       return $this->y;
   }
 
-  public function getDirecao(){
-      return $this->direcao;
+  public function getDirecaoRover(){
+      return $this->direcaoRover;
   }
 
 }
