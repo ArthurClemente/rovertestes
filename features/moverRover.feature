@@ -5,8 +5,8 @@ Funcionalidade: Mover o rover
     Preciso conseguir mover o rover na superficie
 
 Exemplo: Girar o rover da direcao "N" para a direcao "O"
-    Dado que a "direcao" do rover é "N"
-    Quando o parametro da funcao "mover" for "L"
+    Dado que a direcao do plato é "N"
+    Quando o parametro da funcao mover for "L"
     Entao a direcao do rover deve ser igual "O"
 
 Exemplo: Girar o rover da direcao "O" para a direcao "L"
